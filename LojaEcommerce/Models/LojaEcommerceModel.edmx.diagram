@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3f9e4ce1a20d433fa40ab8519c4782bb" Name="Diagram1" >
+        <EntityTypeShape EntityType="LojaEcommerceModel.Cidade" Width="1.5" PointX="2.75" PointY="1" />
+        <EntityTypeShape EntityType="LojaEcommerceModel.Endereco" Width="1.5" PointX="5.375" PointY="1" />
+        <AssociationConnector Association="LojaEcommerceModel.CidadeEndereco" />
+        <EntityTypeShape EntityType="LojaEcommerceModel.Cliente" Width="1.5" PointX="7.75" PointY="1" />
+        <AssociationConnector Association="LojaEcommerceModel.ClienteEndereco" />
+        <EntityTypeShape EntityType="LojaEcommerceModel.Documento" Width="1.5" PointX="10.25" PointY="1" />
+        <AssociationConnector Association="LojaEcommerceModel.DocumentoCliente" />
+        <EntityTypeShape EntityType="LojaEcommerceModel.Categoria" Width="1.5" PointX="2.75" PointY="3.625" />
+        <EntityTypeShape EntityType="LojaEcommerceModel.Utilizador" Width="1.5" PointX="2.75" PointY="5.375" />
+        <EntityTypeShape EntityType="LojaEcommerceModel.Produto" Width="1.5" PointX="5" PointY="4" />
+        <AssociationConnector Association="LojaEcommerceModel.CategoriaProduto" />
+        <AssociationConnector Association="LojaEcommerceModel.UtilizadorProduto" />
+        <EntityTypeShape EntityType="LojaEcommerceModel.Encomenda" Width="1.5" PointX="9.75" PointY="3.75" />
+        <AssociationConnector Association="LojaEcommerceModel.ClienteReserva" />
+        <EntityTypeShape EntityType="LojaEcommerceModel.Promocao" Width="1.5" PointX="7.75" PointY="6.625" />
+        <AssociationConnector Association="LojaEcommerceModel.ProdutoPromocao" />
+        <EntityTypeShape EntityType="LojaEcommerceModel.FormaPagamento" Width="1.5" PointX="12.375" PointY="3.875" />
+        <AssociationConnector Association="LojaEcommerceModel.FormaPagamentoEncomenda" />
+        <EntityTypeShape EntityType="LojaEcommerceModel.EncomendaProduto" Width="1.5" PointX="7.375" PointY="4.25" />
+        <AssociationConnector Association="LojaEcommerceModel.EncomendaEncomendaProduto" />
+        <AssociationConnector Association="LojaEcommerceModel.ProdutoEncomendaProduto" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

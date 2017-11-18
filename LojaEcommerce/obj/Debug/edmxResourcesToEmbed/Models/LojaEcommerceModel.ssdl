@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LojaEcommerceModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="LojaEcommerceModelStoreContainer">
+    <EntitySet Name="Cidades" EntityType="LojaEcommerceModel.Store.Cidades" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Enderecos" EntityType="LojaEcommerceModel.Store.Enderecos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Clientes" EntityType="LojaEcommerceModel.Store.Clientes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Documentos" EntityType="LojaEcommerceModel.Store.Documentos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categorias" EntityType="LojaEcommerceModel.Store.Categorias" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Utilizadores" EntityType="LojaEcommerceModel.Store.Utilizadores" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Produtos" EntityType="LojaEcommerceModel.Store.Produtos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Reservas" EntityType="LojaEcommerceModel.Store.Reservas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Promocoes" EntityType="LojaEcommerceModel.Store.Promocoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FormasPagamento" EntityType="LojaEcommerceModel.Store.FormasPagamento" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EncomendasProduto" EntityType="LojaEcommerceModel.Store.EncomendasProduto" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProdutoPromocao" EntityType="LojaEcommerceModel.Store.ProdutoPromocao" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CidadeEndereco" Association="LojaEcommerceModel.Store.CidadeEndereco">
+      <End Role="Cidade" EntitySet="Cidades" />
+      <End Role="Endereco" EntitySet="Enderecos" />
+    </AssociationSet>
+    <AssociationSet Name="ClienteEndereco" Association="LojaEcommerceModel.Store.ClienteEndereco">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="Endereco" EntitySet="Enderecos" />
+    </AssociationSet>
+    <AssociationSet Name="DocumentoCliente" Association="LojaEcommerceModel.Store.DocumentoCliente">
+      <End Role="Documento" EntitySet="Documentos" />
+      <End Role="Cliente" EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="CategoriaProduto" Association="LojaEcommerceModel.Store.CategoriaProduto">
+      <End Role="Categoria" EntitySet="Categorias" />
+      <End Role="Produto" EntitySet="Produtos" />
+    </AssociationSet>
+    <AssociationSet Name="UtilizadorProduto" Association="LojaEcommerceModel.Store.UtilizadorProduto">
+      <End Role="Utilizador" EntitySet="Utilizadores" />
+      <End Role="Produto" EntitySet="Produtos" />
+    </AssociationSet>
+    <AssociationSet Name="ClienteReserva" Association="LojaEcommerceModel.Store.ClienteReserva">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="Reserva" EntitySet="Reservas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProdutoPromocao_Produto" Association="LojaEcommerceModel.Store.FK_ProdutoPromocao_Produto">
+      <End Role="Produto" EntitySet="Produtos" />
+      <End Role="ProdutoPromocao" EntitySet="ProdutoPromocao" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProdutoPromocao_Promocao" Association="LojaEcommerceModel.Store.FK_ProdutoPromocao_Promocao">
+      <End Role="Promocao" EntitySet="Promocoes" />
+      <End Role="ProdutoPromocao" EntitySet="ProdutoPromocao" />
+    </AssociationSet>
+    <AssociationSet Name="FormaPagamentoEncomenda" Association="LojaEcommerceModel.Store.FormaPagamentoEncomenda">
+      <End Role="FormaPagamento" EntitySet="FormasPagamento" />
+      <End Role="Encomenda" EntitySet="Reservas" />
+    </AssociationSet>
+    <AssociationSet Name="EncomendaEncomendaProduto" Association="LojaEcommerceModel.Store.EncomendaEncomendaProduto">
+      <End Role="Encomenda" EntitySet="Reservas" />
+      <End Role="EncomendaProduto" EntitySet="EncomendasProduto" />
+    </AssociationSet>
+    <AssociationSet Name="ProdutoEncomendaProduto" Association="LojaEcommerceModel.Store.ProdutoEncomendaProduto">
+      <End Role="Produto" EntitySet="Produtos" />
+      <End Role="EncomendaProduto" EntitySet="EncomendasProduto" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Cidades">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Enderecos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Morada" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CidadeId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NumeroDocumento" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DocumentoId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Endereco_Id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Documentos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categorias">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Utilizadores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="NomeUtilizador" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Senha" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Estado" Type="bit" Nullable="false" DefaultValue="true" />
+    <Property Name="IsAdmin" Type="bit" Nullable="false" DefaultValue="false" />
+  </EntityType>
+  <EntityType Name="Produtos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DataRegisto" Type="datetime" Nullable="false" />
+    <Property Name="NumeroSerie" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TempoGarantia" Type="int" Nullable="false" />
+    <Property Name="Preco" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Imagem" Type="varbinary(max)" Nullable="false" />
+    <Property Name="CategoriaId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UtilizadorId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Diponivel" Type="bit" Nullable="false" DefaultValue="true" />
+    <Property Name="ImagemTipo" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reservas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ClienteId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DataReserva" Type="datetime" Nullable="false" />
+    <Property Name="FormaPagamentoId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Promocoes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DataInicio" Type="datetime" Nullable="false" />
+    <Property Name="DataFim" Type="datetime" Nullable="false" />
+    <Property Name="Percentagem" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DataRegisto" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FormasPagamento">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Forma" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EncomendasProduto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EncomendaId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProdutoId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProdutoPromocao">
+    <Key>
+      <PropertyRef Name="Produto_Id" />
+      <PropertyRef Name="Promocao_Id" />
+    </Key>
+    <Property Name="Produto_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Promocao_Id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <Association Name="CidadeEndereco">
+    <End Role="Cidade" Type="LojaEcommerceModel.Store.Cidades" Multiplicity="1" />
+    <End Role="Endereco" Type="LojaEcommerceModel.Store.Enderecos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cidade">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Endereco">
+        <PropertyRef Name="CidadeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClienteEndereco">
+    <End Role="Cliente" Type="LojaEcommerceModel.Store.Clientes" Multiplicity="*" />
+    <End Role="Endereco" Type="LojaEcommerceModel.Store.Enderecos" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Endereco">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="Endereco_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DocumentoCliente">
+    <End Role="Documento" Type="LojaEcommerceModel.Store.Documentos" Multiplicity="1" />
+    <End Role="Cliente" Type="LojaEcommerceModel.Store.Clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Documento">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="DocumentoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CategoriaProduto">
+    <End Role="Categoria" Type="LojaEcommerceModel.Store.Categorias" Multiplicity="1" />
+    <End Role="Produto" Type="LojaEcommerceModel.Store.Produtos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Produto">
+        <PropertyRef Name="CategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UtilizadorProduto">
+    <End Role="Utilizador" Type="LojaEcommerceModel.Store.Utilizadores" Multiplicity="1" />
+    <End Role="Produto" Type="LojaEcommerceModel.Store.Produtos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilizador">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Produto">
+        <PropertyRef Name="UtilizadorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClienteReserva">
+    <End Role="Cliente" Type="LojaEcommerceModel.Store.Clientes" Multiplicity="1" />
+    <End Role="Reserva" Type="LojaEcommerceModel.Store.Reservas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reserva">
+        <PropertyRef Name="ClienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FormaPagamentoEncomenda">
+    <End Role="FormaPagamento" Type="LojaEcommerceModel.Store.FormasPagamento" Multiplicity="1" />
+    <End Role="Encomenda" Type="LojaEcommerceModel.Store.Reservas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormaPagamento">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Encomenda">
+        <PropertyRef Name="FormaPagamentoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EncomendaEncomendaProduto">
+    <End Role="Encomenda" Type="LojaEcommerceModel.Store.Reservas" Multiplicity="1" />
+    <End Role="EncomendaProduto" Type="LojaEcommerceModel.Store.EncomendasProduto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Encomenda">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EncomendaProduto">
+        <PropertyRef Name="EncomendaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProdutoEncomendaProduto">
+    <End Role="Produto" Type="LojaEcommerceModel.Store.Produtos" Multiplicity="1" />
+    <End Role="EncomendaProduto" Type="LojaEcommerceModel.Store.EncomendasProduto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EncomendaProduto">
+        <PropertyRef Name="ProdutoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProdutoPromocao_Produto">
+    <End Role="Produto" Type="LojaEcommerceModel.Store.Produtos" Multiplicity="1" />
+    <End Role="ProdutoPromocao" Type="LojaEcommerceModel.Store.ProdutoPromocao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProdutoPromocao">
+        <PropertyRef Name="Produto_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProdutoPromocao_Promocao">
+    <End Role="ProdutoPromocao" Type="LojaEcommerceModel.Store.ProdutoPromocao" Multiplicity="*" />
+    <End Role="Promocao" Type="LojaEcommerceModel.Store.Promocoes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Promocao">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProdutoPromocao">
+        <PropertyRef Name="Promocao_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

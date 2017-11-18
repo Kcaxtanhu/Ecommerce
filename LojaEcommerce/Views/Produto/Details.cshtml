@@ -1,0 +1,108 @@
+﻿@using LojaEcommerce.Models
+@model LojaEcommerce.Models.Produto
+
+@{
+    ViewBag.Title = "Details";
+
+}
+
+<h4>Details</h4>
+<hr />
+
+<div class="row">
+    <div class="col-lg-9">
+
+    </div>
+    <div class="col-lg-3">
+        <div class="card mb-3">
+            <div class="card-header">
+                Recorte de Página
+            </div>
+            <div class="card-body">
+                <div>
+                    @{
+                        var protudo = ViewBag.Model as Produto;
+                        @Html.Partial("_Produto", protudo);
+                    }
+                </div>
+            </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataRegisto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataRegisto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroSerie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroSerie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TempoGarantia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TempoGarantia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Preco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Preco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diponivel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diponivel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Utilizador.NomeUtilizador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Utilizador.NomeUtilizador)
+        </dd>
+
+    </dl>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

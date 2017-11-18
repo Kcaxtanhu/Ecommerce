@@ -1,0 +1,170 @@
+﻿@using LojaEcommerce.Models
+@model IEnumerable<LojaEcommerce.Models.Produto>
+
+@{
+    ViewBag.Title = "Index";
+
+    if (Session["utilizador"].GetType() != Type.GetType("Utilizador"))
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    var produtos = (List<Produto>)Session["cart"];
+}
+
+
+<divc class="row">
+    <div class="col-lg-9">
+        <h3>Produtos</h3>
+        <div ng-controller="MainCtrl">
+            @foreach (Produto x in Model)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @x.Nome
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-3 col-md-6" style="color:blue">
+                            <img src="@Url.Action("Ficheiro", new { produto = x.Id })" width="400" height="400" />
+                        </div>
+                        <div class="col-sm-9 col-md-6">
+                            <h3>
+                                <span id="mobilename" style="color:black">
+                                    <b> Nome do Produto: </b>
+                                </span>
+                            </h3>
+                            <h6>
+                                <span id="Nome" style="color:black"> @x.Nome </span>
+                            </h6>
+                            <h3>
+                                <span id="mobilename" style="color:black">
+                                    <b> Tempo de Garantia: </b>
+                                </span>
+                            </h3>
+                            <h6>
+                                <span id="mobilename" style="color:black"> @x.TempoGarantia </span>
+                            </h6>
+                            <h3>
+                                <span id="mobilename" style="color:black">
+                                    <b> Preço: </b>
+                                </span>
+                            </h3>
+                            <h4>
+                                <span id="mobilename" style="color:black"> @x.Preco </span>
+                            </h4>
+                            <h3>
+                                <span id="mobilename" style="color:black">
+                                    <b> Disponibilidade: </b>
+                                </span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div>
+                        <a id="btn_add" href="@Url.Action("Add", "Carrinho", new { id = x.Id })" class="btn btn-info btn-lg" style="margin-left:60px">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>Adiciona ao Carrinho
+                        </a>
+                        <br />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-lb-3">
+        @if (produtos == null)
+        {
+            <label>Não existem Itens no carrinho</label>;
+        }
+        else
+        {
+            <table class="table" style="width:inherit">
+                <thead>
+                    <b>Itens do Carrinho</b>
+                </thead>
+                @foreach (var item in produtos)
+                {
+                        <tr>
+                            <td>
+                                @item.Nome
+                            </td>
+                            @*<td>
+                        @item.NumeroSerie
+                    </td>
+                    <td>
+                        @item.TempoGarantia
+                    </td>*@
+                            <td>
+                                @item.Preco
+                            </td>
+                            <td>
+                                <a id="btn_add" href="@Url.Action("Delete", "Carrinho", new { id = item.Id })">Remover</a>
+                            </td>
+                        </tr>
+                    }
+            </table>
+            <div>
+                <a href="@Url.Action("Create", "Encomenda" )" class="btn btn-info btn-lg">Confirmar Encomenda</a>
+            </div>
+            Session["carrinho"] = produtos;
+        }
+    </div>
+</divc>
+
+
+<br />
+
+
+@*<h2>Carrinho</h2>
+
+    @if (produtos == null)
+    {
+        <label>Não existem Itens no carrinho</label>;
+    }
+    else
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumeroSerie)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TempoGarantia)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Preco)
+                </th>
+                <th>
+                </th>
+            </tr>
+
+            @foreach (var item in produtos)
+            {
+                <tr>
+                    <td>
+                        @item.Nome
+                    </td>
+                    <td>
+                        @item.NumeroSerie
+                    </td>
+                    <td>
+                        @item.TempoGarantia
+                    </td>
+                    <td>
+                        @item.Preco
+                    </td>
+                    <td>
+                        <a id="btn_add" href="@Url.Action("Delete", "Carrinho", new { id = item.Id })" >Remover</a>
+                            Html.ActionLink("Remover", "Delete", "Carrinho", new { id = item.Id })
+                            Html.Action("Delete", "Carrinho", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </table>
+    }*@
+

@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LojaEcommerceModelStoreContainer" CdmEntityContainer="LojaEcommerceContext">
+    <EntitySetMapping Name="Cidades">
+      <EntityTypeMapping TypeName="IsTypeOf(LojaEcommerceModel.Cidade)">
+        <MappingFragment StoreEntitySet="Cidades">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Enderecos">
+      <EntityTypeMapping TypeName="IsTypeOf(LojaEcommerceModel.Endereco)">
+        <MappingFragment StoreEntitySet="Enderecos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Morada" ColumnName="Morada" />
+          <ScalarProperty Name="CidadeId" ColumnName="CidadeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="IsTypeOf(LojaEcommerceModel.Cliente)">
+        <MappingFragment StoreEntitySet="Clientes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
+          <ScalarProperty Name="DocumentoId" ColumnName="DocumentoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Documentos">
+      <EntityTypeMapping TypeName="IsTypeOf(LojaEcommerceModel.Documento)">
+        <MappingFragment StoreEntitySet="Documentos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categorias">
+      <EntityTypeMapping TypeName="IsTypeOf(LojaEcommerceModel.Categoria)">
+        <MappingFragment StoreEntitySet="Categorias">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Utilizadores">
+      <EntityTypeMapping TypeName="IsTypeOf(LojaEcommerceModel.Utilizador)">
+        <MappingFragment StoreEntitySet="Utilizadores">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NomeUtilizador" ColumnName="NomeUtilizador" />
+          <ScalarProperty Name="Senha" ColumnName="Senha" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Produtos">
+      <EntityTypeMapping TypeName="IsTypeOf(LojaEcommerceModel.Produto)">
+        <MappingFragment StoreEntitySet="Produtos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="DataRegisto" ColumnName="DataRegisto" />
+          <ScalarProperty Name="NumeroSerie" ColumnName="NumeroSerie" />
+          <ScalarProperty Name="TempoGarantia" ColumnName="TempoGarantia" />
+          <ScalarProperty Name="Preco" ColumnName="Preco" />
+          <ScalarProperty Name="Imagem" ColumnName="Imagem" />
+          <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
+          <ScalarProperty Name="UtilizadorId" ColumnName="UtilizadorId" />
+          <ScalarProperty Name="Diponivel" ColumnName="Diponivel" />
+          <ScalarProperty Name="ImagemTipo" ColumnName="ImagemTipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservas">
+      <EntityTypeMapping TypeName="IsTypeOf(LojaEcommerceModel.Encomenda)">
+        <MappingFragment StoreEntitySet="Reservas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+          <ScalarProperty Name="DataReserva" ColumnName="DataReserva" />
+          <ScalarProperty Name="FormaPagamentoId" ColumnName="FormaPagamentoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Promocoes">
+      <EntityTypeMapping TypeName="IsTypeOf(LojaEcommerceModel.Promocao)">
+        <MappingFragment StoreEntitySet="Promocoes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DataInicio" ColumnName="DataInicio" />
+          <ScalarProperty Name="DataFim" ColumnName="DataFim" />
+          <ScalarProperty Name="Percentagem" ColumnName="Percentagem" />
+          <ScalarProperty Name="DataRegisto" ColumnName="DataRegisto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormasPagamento">
+      <EntityTypeMapping TypeName="IsTypeOf(LojaEcommerceModel.FormaPagamento)">
+        <MappingFragment StoreEntitySet="FormasPagamento">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Forma" ColumnName="Forma" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EncomendasProduto">
+      <EntityTypeMapping TypeName="IsTypeOf(LojaEcommerceModel.EncomendaProduto)">
+        <MappingFragment StoreEntitySet="EncomendasProduto">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EncomendaId" ColumnName="EncomendaId" />
+          <ScalarProperty Name="ProdutoId" ColumnName="ProdutoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ClienteEndereco" TypeName="LojaEcommerceModel.ClienteEndereco" StoreEntitySet="Clientes">
+      <EndProperty Name="Endereco">
+        <ScalarProperty Name="Id" ColumnName="Endereco_Id" />
+      </EndProperty>
+      <EndProperty Name="Cliente">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProdutoPromocao" TypeName="LojaEcommerceModel.ProdutoPromocao" StoreEntitySet="ProdutoPromocao">
+      <EndProperty Name="Produto">
+        <ScalarProperty Name="Id" ColumnName="Produto_Id" />
+      </EndProperty>
+      <EndProperty Name="Promocao">
+        <ScalarProperty Name="Id" ColumnName="Promocao_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

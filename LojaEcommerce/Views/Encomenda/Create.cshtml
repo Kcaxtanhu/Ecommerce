@@ -1,0 +1,86 @@
+﻿@using LojaEcommerce.Models
+@model EditarEncomenda
+
+@{
+    ViewBag.Title = "Create";
+
+    var produtos = ViewBag.Produtos;
+
+    var documentos = (SelectList)ViewBag.DocumentoId;
+    var formas = (SelectList)ViewBag.FormaPagamentoId;
+    var cidades = (SelectList)ViewBag.CidadeId;
+
+    //Model.Produtos = new List<Produto>();
+
+    //foreach (var p in produtos)
+    //{
+    //    Model.Produtos.Add(p);
+    //}
+}
+
+@using (Html.BeginForm("Create","Encomenda",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Encomenda</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DocumentoId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.DocumentoId, documentos, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DocumentoId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NumeroDocumento, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NumeroDocumento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NumeroDocumento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Morada, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Morada, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Morada, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CidadeId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.CidadeId, cidades, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CidadeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FormaId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.DropDownListFor(model => model.CidadeId, cidades, new { @class = "form-control" })*@
+                @Html.DropDownListFor(model => model.FormaId, formas, new { @class = "from-control" })
+                @Html.ValidationMessageFor(model => model.FormaId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+}

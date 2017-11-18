@@ -1,0 +1,5 @@
+﻿@using LojaEcommerce.Models
+@model Produto
+
+
+<img class="img-responsive" href="@Url.Action("Ficheiro", new { produto = ViewBag.Produto })" alt="@Model.Nome" />
